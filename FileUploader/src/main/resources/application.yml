@@ -1,3 +1,7 @@
 client_pc:
   name:
   file_repo_location: /Users/kievjtr/Desktop/FILEREPO
+logging:
+  level: INFO
+  file:
+    path: ${user.home}/filemanage/logs
