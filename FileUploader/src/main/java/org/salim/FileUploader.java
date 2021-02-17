@@ -17,14 +17,14 @@ public class FileUploader {
     private static final String remoteRootPath = "/usr/local/filerepo";
     private static final String localRootPath = "D:\\filerepo\\";
 
-    private static void checkFile (List<File> fileList, File file) {
+    private static void checkLocalFiles (List<File> fileList, File file) {
         if (file.isFile()) {
             LOG.info("<<{}>> Is file", file.getName());
             fileList.add(file);
         } else {
             LOG.info("<<{}>> Is directory, go deeper", file.getName());
             for (File nextFile : file.listFiles()) {
-                checkFile(fileList, nextFile);
+                checkLocalFiles(fileList, nextFile);
             }
         }
     }
@@ -72,7 +72,7 @@ public class FileUploader {
         if (localFileBase.exists() && localFileBase.isDirectory()) {
             //遍历，推荐用递归,列出所有文件
             List<File> allFiles = new ArrayList<>();
-            checkFile(allFiles, localFileBase);
+            checkLocalFiles(allFiles, localFileBase);
 
             System.out.println("Fin");
         } else {
