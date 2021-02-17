@@ -15,10 +15,10 @@ public class FileUploader {
 
     private static void checkFile (List<File> fileList, File file) {
         if (file.isFile()) {
-            LOG.info("{} Is file", file.getName());
+            LOG.info("<<{}>> Is file", file.getName());
             fileList.add(file);
         } else {
-            LOG.info("{} Is directory, go deeper", file.getName());
+            LOG.info("<<{}>> Is directory, go deeper", file.getName());
             for (File nextFile : file.listFiles()) {
                 checkFile(fileList, nextFile);
             }
